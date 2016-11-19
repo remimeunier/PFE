@@ -31,6 +31,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.io.PrintWriter;
 
 
 public class Searcher {
@@ -48,9 +49,11 @@ public class Searcher {
         IndexReader ir = DirectoryReader.open(FSDirectory.open(Paths.get("index")));
 
        	if (searchType == 1) {
+       		System.out.println("1");
        		searchTags(ir, querryStr);
        	}
        	else if (searchType == 2) {
+       		System.out.println("2");
        		File f = new File(imageFilePath);
             ImageSearcher searcher = new GenericFastImageSearcher(30, CEDD.class);
 //          ImageSearcher searcher = new GenericFastImageSearcher(30, AutoColorCorrelogram.class);
@@ -63,8 +66,10 @@ public class Searcher {
             }
             SearchImage(ir, searcher, img);
        	} else if (searchType == 3) {
+       		System.out.println("3");
        		SearchTagsAndRerankLire(ir, querryStr, imageFilePath);
        	} else if (searchType == 4) {
+       		System.out.println("4");
        		
        		IndexSearcher indexSearcher = new IndexSearcher(ir);
             QueryParser queryParser = new QueryParser("tags",  new StandardAnalyzer());  
@@ -87,13 +92,16 @@ public class Searcher {
        IndexSearcher indexSearcher = new IndexSearcher(ir);
        QueryParser queryParser = new QueryParser("tags",  new StandardAnalyzer());  
        Query query = queryParser.parse(querryStr);
-       TopDocs topDocs = indexSearcher.search(query, 20);
+       TopDocs topDocs = indexSearcher.search(query, 1214);
        
+
        displayResultLucen(topDocs, indexSearcher);
+       PrintResult(topDocs, indexSearcher);
 
     }
     
     public static void displayResultLucen(TopDocs topDocs, IndexSearcher indexSearcher) throws IOException {
+    	System.out.println("blabla");
         System.out.println("Total hits : " + topDocs.totalHits);
         for (ScoreDoc scoreDoc : topDocs.scoreDocs) {           
             Document document = indexSearcher.doc(scoreDoc.doc);
@@ -134,6 +142,21 @@ public class Searcher {
         System.out.println("Résultat Rerank with LIRE : ");
         displayResultLire(hits, ir);
     
+    }
+    
+    public static void PrintResult(TopDocs topDocs, IndexSearcher indexSearcher) throws IOException {
+
+        try{
+        	System.out.println("blabla");
+            PrintWriter writer = new PrintWriter("result.txt", "UTF-8");
+            for (ScoreDoc scoreDoc : topDocs.scoreDocs) {           
+                Document document = indexSearcher.doc(scoreDoc.doc);
+                writer.println(document.getValues(DocumentBuilder.FIELD_NAME_IDENTIFIER)[0]);
+            }
+            writer.close();
+        } catch (Exception e) {
+           // do something
+        }
     }
 
     
