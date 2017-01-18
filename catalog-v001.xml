@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1484301462533" name="duplicate:http://a.com/ontology" uri="animals-vh.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1484301462533" name="duplicate:http://a.com/ontology" uri="ontology3.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1484301462533" name="http://nlp.shef.ac.uk/abraxas/ontologies/animals.owl" uri="animal.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1484301462533" name="http://www.co-ode.org/ontologies/pizza/pizza.owl" uri="pizza.owl.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1484301462533" name="http://www.universities-project.fr/ontologies/universites#" uri="Etablissements%20superieurs%20francais%20-%20v2.7.owl"/>
+    </group>
+</catalog>

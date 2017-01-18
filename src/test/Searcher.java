@@ -41,8 +41,8 @@ public class Searcher {
         
         int searchType = 1; //1 = tags, 2 = images, 3 = tags, then rerank with lire, 4 = querry sentence
         
-        String querryStr = "tags:animals OR zebra OR animal OR dog OR dogs OR bird OR birds OR cat OR cats OR rabbit OR rabbits OR mouse OR lion OR buterfly OR turtle OR cow OR tiger OR cows OR tigers OR elephant OR deer OR deers OR elephants lions OR turtles OR snake OR penda OR chiken OR kangaroo OR puppy OR fish OR bear";
-        String imageFilePath = "/Users/remi/Documents/dev/galata/elcipse/mirflickr/im10124.jpg";
+        String querryStr = "tags:IMpressedbeauty";
+        String imageFilePath = "/Users/remi/Documents/dev/galata/elcipse/mirflickr/im14614.jpg";
 
 
 
@@ -96,7 +96,7 @@ public class Searcher {
        
 
        displayResultLucen(topDocs, indexSearcher);
-       PrintResult(topDocs, indexSearcher);
+       //PrintResult(topDocs, indexSearcher);
 
     }
     
@@ -147,7 +147,6 @@ public class Searcher {
     public static void PrintResult(TopDocs topDocs, IndexSearcher indexSearcher) throws IOException {
 
         try{
-        	System.out.println("blabla");
             PrintWriter writer = new PrintWriter("result.txt", "UTF-8");
             for (ScoreDoc scoreDoc : topDocs.scoreDocs) {           
                 Document document = indexSearcher.doc(scoreDoc.doc);
