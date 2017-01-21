@@ -41,7 +41,7 @@ public class Searcher {
         
         int searchType = 1; //1 = tags, 2 = images, 3 = tags, then rerank with lire, 4 = querry sentence
         
-        String querryStr = "tags:IMpressedbeauty";
+        String querryStr = "tags:Pinguin Glace";
         String imageFilePath = "/Users/remi/Documents/dev/galata/elcipse/mirflickr/im14614.jpg";
 
 

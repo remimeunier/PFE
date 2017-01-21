@@ -79,13 +79,13 @@ public class Indexer
             
             System.out.println("Indexing " + imageFilePath);
             try {
+            	
             	//create doc + Fields visual data
                 BufferedImage img = ImageIO.read(new FileInputStream(imageFilePath));
                 Document document = globalDocumentBuilder.createDocument(img, imageFilePath);
                               
                 //Tags
     			document.add(new TextField("tags", Utile.stemmIndex(tags), Field.Store.YES));
-    			System.out.println(Utile.stemmIndex(tags));
     			
     			//metadata
     			metadata = Utile.extractMetadata(imageFilePath);
